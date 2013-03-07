@@ -1,0 +1,25 @@
+<div class="wrap_new_table">
+  <div class="my_case">
+    <h2>工单检索</h2>
+  </div>
+  <div class="new_table">
+
+    <%= form_tag :action=>'query' do  %> <table>
+     <tr class='rol_d'><td colspan=2>开始日期<%=select_date @start,:prefix=>"start" %>结束日期<%=select_date @last,:prefix=>"end"%></td>
+     </tr> <tr class='rol_e'>
+      <td class='r'>故障类型</td><td class='l'><%= select_tag 'casetype', options_for_select(ItCase::CASETYPES),:include_blank=>true %></td>
+    </tr><tr class="rol_d">
+      <td class="r">评分</td><td class='l'><%= text_field_tag 'rank'  %> </td>
+    </tr><tr class="rol_e">
+      <td class="r">评价状态</td> <td class='l'><%= select_tag 'comment', options_for_select(["已评价","未评价"]),:include_blank=>true %> </td>
+    </tr> <tr class="rol_d"><td class="r">处理人员(email)  </td><td class='l'><%= text_field_tag "staff_email" %></td>
+
+    </tr>
+  </table>
+     <div class="more"><%= submit_tag "查询" %></div>
+
+
+    <% end %>
+
+    </div>
+ </div>

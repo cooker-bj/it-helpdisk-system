@@ -1,0 +1,74 @@
+
+<%= form_for @it_case,:url=>mytask_path(@mytask) do |f| %>
+    <% if @it_case.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@it_case.errors.count, "error") %> prohibited this it_case from being saved:</h2>
+
+          <ul>
+            <% @it_case.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+<p>
+  <b>问题提交时间</b>
+  <%= @it_case.opened_time %>
+</p>
+
+
+<p>
+  <b>姓名:</b>
+  <%= @it_case.name %>
+</p>
+
+<p>
+  <b>部门:</b>
+  <%= @it_case.department %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=@it_case.email %>
+</p>
+
+<p>
+  <b>电话:</b>
+  <%= @it_case.phone %>
+</p>
+
+<p>
+  <b>办公区:</b>
+  <%= @it_case.location %>
+</p>
+
+<p>
+  <b>工位号:</b>
+  <%= @it_case.cubnum %>
+</p>
+ <p>
+   <b>IP地址</b>
+   <%= @it_case.ipaddress %>
+ </p>
+<p>
+  <b>问题描述:</b>
+  <%= @it_case.description %>
+</p>
+<p>
+<div class='field'>
+  <b><%=f.label :casetype,"问题类型:"%></b>
+  <%= f.select :casetype,ItCase::CASETYPES %>
+</div>
+</p>
+<p>
+<div class='field'>
+<b>  <%= f.label :result,"处理结果:" %> </b><br/>
+  <%= f.text_area :result,:rows=>4,:cols=>30 %>
+</div>
+ </p>
+<div class='action'>
+  <%= f.submit '暂存待办' %>
+  <%= f.submit '关闭',:name=>'key' %>
+  <%= f.submit '升级',:name=>'upgrade' %>
+</div>
+  <%end%>

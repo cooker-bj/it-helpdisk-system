@@ -1,0 +1,3 @@
+module MywirelessesHelper
+
+end

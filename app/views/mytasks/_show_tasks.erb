@@ -1,0 +1,29 @@
+ <div class="c_table">
+<table cellspacing="0" cellpadding="0"><thead><tr><th>姓名</th><th>部门</th><th>电话</th><th>问题描述</th><th>处理人</th> </tr></thead>
+<%unless tasks.blank? %>
+      <tbody>
+      <%i=0%>
+ <%   tasks.each do |task|  %>
+          <% if i.even? %>
+              <tr class="rol_d">
+          <%else%>
+              <tr class="rol_e">
+          <%end%>
+       <td> <%=task.it_case.name %></td>
+        <td><%= task.it_case.department %></td>
+        <td><%= task.it_case.phone %> </td>
+       <td> <%= task.it_case.description %>  </td>
+        <td><%= task.name %></td>
+
+
+        <td><%= link_to '详情',mytask_path(task.id) %> </td><%unless task.status!='pending' %><td>
+        <%= link_to '处理',edit_mytask_path(task)%> </td> <%end%>
+        </tr>
+      <%i+=1%>
+        <%end%>
+    
+
+<% end %>
+  </tbody>
+ </table>
+ </div>

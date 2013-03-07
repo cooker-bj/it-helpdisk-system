@@ -1,0 +1,5 @@
+<p><%= @recipient %> 你好  </p>
+ <p>   您于<%=@itcase.opened_time%>提交的工单已关闭。 工单处理结果如下：</p>
+    <p><%=@itcase.result  %></p>
+   <p> 欢迎您登录工单系统<%=link_to "http://ithelp.autonavi.com",comment_url(@itcase,:host=>"ithelp.autonavi.com") %>对我们的工作做出评价， 您的意见对我们很重要， 它将帮助我们改进工作， 更好的为员工提供优良IT服务。</p>
+                                                 IT部

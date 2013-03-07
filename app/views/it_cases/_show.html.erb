@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <b>问题提交时间</b>
+  <%= @it_case.opened_time %>
+</p>
+
+
+<p>
+  <b>姓名:</b>
+  <%= @it_case.name %>
+</p>
+
+<p>
+  <b>部门:</b>
+  <%= @it_case.department %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @it_case.email %>
+</p>
+
+<p>
+  <b>电话:</b>
+  <%= @it_case.phone %>
+</p>
+
+<p>
+  <b>工作区:</b>
+  <%= @it_case.location %>
+</p>
+
+<p>
+  <b>工位编号:</b>
+  <%= @it_case.cubnum %>
+</p>
+<p>
+  <b>IP地址：</b>
+  <%= @it_case.ipaddress %>
+</p>
+<p>
+  <b>问题描述:</b>
+  <%= @it_case.description %>
+</p>
+
+<p>
+  <b>问题类别:</b>
+  <%= @it_case.casetype %>
+</p>
+
+<p>
+  <b>评价</b>
+  <%=@it_case.comment %>
+</p>
+
+<p>
+  <b> 评分</b>
+  <%= @it_case.rank %>
+</p>
+
+<p>
+  <b>状态</b>
+  <%= @it_case.status %>
+</p>

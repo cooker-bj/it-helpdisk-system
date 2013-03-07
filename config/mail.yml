@@ -1,0 +1,6 @@
+
+:address: 10.2.145.75
+:port: 25
+:domain: company.com
+:authentication: :ntlm
+:enable_starttls_auto: false

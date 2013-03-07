@@ -1,0 +1,4 @@
+<h1>工单详情</h1>
+<%=render "it_cases/show"   %>
+<%= link_to "处理",edit_mytask_path(@task) if @task.status=='pending' %>
+<%= link_to "返回",:back %>

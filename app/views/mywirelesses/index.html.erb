@@ -1,0 +1,49 @@
+<div class="wrap">
+  <div class="my_case">
+    <h2>我的无线使用申请</h2>
+  </div>
+  <div class="c_btn">
+    <%= link_to "申请无线",{:action=>'new'},:method=>:get %></div>
+  <div class='tit'>
+
+    <h3>访客无线申请</h3>
+  </div>
+  <div class="c_table">
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+      <tr>
+        <th>访客姓名</th>
+        <th>访客单位</th>
+        <th>申请原因</th>
+        <th>申请数量</th>
+        <th>启用时间</th>
+        <th>使用时长</th>
+      </tr></thead>
+      <tbody>
+      <% i=0 %>
+      <% @myapps.each do |myapp| %>
+          <% if i.even? %>
+              <tr class="rol_d">
+          <%else%>
+              <tr class="rol_e">
+          <%end%>
+          <td><%= myapp.guest_name %></td>
+          <td><%= myapp.guest_from %></td>
+          <td><%= myapp.reason %></td>
+          <td><%= myapp.number %></td>
+
+          <td><%= myapp.enabled_time %></td>
+          <td><%= myapp.during %></td>
+          <td><%= link_to "详情",mywireless_path(myapp) %></td>
+
+          </tr>
+          <%i+=1%>
+      <% end %></tbody >
+    </table>    </div>
+  <div class="more"> <%= will_paginate @myapps %></div>
+
+
+
+
+</div>
+

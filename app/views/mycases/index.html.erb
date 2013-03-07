@@ -1,0 +1,54 @@
+<div class="wrap">
+<div class="my_case">
+<h2>我的工单</h2>
+</div>
+  <div class="c_btn">
+<%= link_to "创建工单",{:action=>'new'},:method=>:get %></div>
+<div class='tit'>
+
+    <h3>未完成工单</h3>
+</div>
+  <div class="c_table">
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+      <tr>
+        <th>姓名</th>
+        <th>部门</th>
+        <th>问题类型</th>
+        <th>问题描述</th>
+        <th>提交时间</th>
+        <th>处理状态</th>
+      </tr></thead>
+       <tbody>
+       <% i=0 %>
+      <% @my_opened_cases.each do |it_case| %>
+           <% if i.even? %>
+               <tr class="rol_d">
+           <%else%>
+               <tr class="rol_e">
+           <%end%>
+            <td><%= it_case.name %></td>
+            <td><%= it_case.department %></td>
+            <td><%= it_case.casetype %></td>
+            <td><%= it_case.description %></td>
+
+            <td><%= it_case.opened_time.to_s() %></td>
+            <td><%= it_case.status %></td>
+
+          </tr>
+       <%i+=1%>
+      <% end %></tbody >
+    </table>    </div>
+
+
+
+
+        <%= render "form" %>
+
+
+      <div class="more"> <%=link_to "更多", closed_cases_path %></div>
+
+
+
+
+</div>

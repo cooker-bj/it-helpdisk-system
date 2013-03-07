@@ -1,0 +1,30 @@
+<h1>Listing tasks</h1>
+
+<table>
+  <tr>
+    <th>Userid</th>
+    <th>Taken date</th>
+    <th>It case</th>
+    <th>Finished time</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tasks.each do |task| %>
+  <tr>
+    <td><%= task.userid %></td>
+    <td><%= task.taken_date %></td>
+    <td><%= task.it_case_id %></td>
+    <td><%= task.finished_time %></td>
+    <td><%= task.status %></td>
+    <td><%= link_to 'Show', task %></td>
+    <td><%= link_to 'Edit', edit_task_path(task) %></td>
+    <td><%= link_to 'Destroy', task, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Task', new_task_path %>

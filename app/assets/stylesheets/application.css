@@ -1,0 +1,229 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+
+.head { height: 60px;width: 99%;border: 2px; position:absolute; top:5px; }
+#identity {position: absolute;right: 60px;}
+#toplogo { position:absolute; left:5px; top:10px;}
+.notice{ position:absolute; top:96px; height:auto; width:99%; color:red;}
+#content{position:absolute; top:75px;left:205px;width:99%;}
+h1 {background: #1c8fff;height:30px;padding:10px ;}
+
+.alert { color: red;}
+.mymenu{
+    width:200px;
+    position:absolute;
+    left:1px;
+    top: 120px;
+    text-align: center;
+    font-size:12px;
+
+}
+body {
+    margin:0 auto;
+    padding:0;
+    color:#333333;
+    font-family:"宋体", Verdana, Geneva, sans-serif;
+    font-size:12px;
+    background:#ededed url(body_bg.jpg) repeat;
+}
+.center{
+    text-align:center;
+}
+
+.left{
+    float:left;
+}
+
+
+.right{
+     float:right;
+}
+.wrap {
+    width:80%;
+    margin:0 auto 20px auto;
+    padding:20px;
+    height:auto;
+    float:left;
+}
+
+.pic{
+ width: 100%;
+ height: 300px;
+}
+.my_case h2 {
+    text-align:center;
+    background:url(title_bg.jpg) repeat-x;
+    height:29px;
+    border-left: 1px solid #529BD6;
+    border-right: 1px solid #529BD6;
+    line-height:29px;
+	color:#fff;
+}
+.c_btn {
+    background:url(c_btn.jpg) no-repeat;
+    width:82px;
+    height:25px;
+    float:right;
+	color:#fff;
+}
+.c_btn a {
+    color:#FFF;
+    font-size:12px;
+    text-align:center;
+    line-height:25px;
+    text-decoration:none;
+    width:82px;
+    display:block;
+}
+.c_table table, .new_table table {
+    width:100%;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #B9B9B9;
+    height:auto;
+    margin-bottom: 20px;
+}
+.s_table table{
+    width: 50%;
+	height:290px;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #B9B9B9;
+    hight: auto;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.s_table tr td{
+	table-layout:fixed;
+	border : 1px solid #cfcfcf;
+}
+
+.tit h3 {
+    background:url(btn.jpg) no-repeat;
+    width:117px;
+    height:30px;
+    font-size:14px;
+    text-align:center;
+    line-height:25px;
+	color:#fff;
+}
+.c_table thead tr, .s_table thead tr {
+    background: url("th_bg.jpg") repeat-x scroll 0 0 transparent;
+    height: 37px;
+    line-height: 37px;
+    margin-bottom: 1px;
+    text-align: center;
+    color: #494949;
+}
+.c_table thead tr th, .c_table tbody tr td, .new_table tr td {
+    table-layout:fixed;
+    border-right:1px solid #cfcfcf;
+}
+.c_table tbody tr td, .new_table table tr td {
+    padding:0 10px;
+    height:25px;
+    color:#494949;
+    text-align:center;
+}
+tr.rol_e {
+    background:#ededed;
+}
+tr.rol_d {
+    background:#e0e0e0;
+}
+.more {
+    float:right;
+	color:#fff;
+}
+.more a , .more input{
+    background:url(c_btn.jpg) no-repeat;
+    width:82px;
+    height:25px;
+    display:block;
+    float:left;
+    color:#FFF;
+    text-decoration:none;
+    text-align:center;
+    line-height:25px;
+    margin-right:10px;
+}
+.more a:hover, .c_btn a:hover {
+    background:url(btn_hover.jpg) no-repeat;
+}
+.new_table table tr td.r {
+    text-align:right;
+    width:30%;
+}
+.new_table table tr td.l {
+    text-align:left;
+
+}
+.wrap_new_table {
+    width:50%;
+    height: auto;
+    margin:0 auto 20px auto;
+    padding: 20px;
+}
+input {
+    width:200px;
+    height:19px;
+}
+textarea, select, input {
+    border:1px solid #b9b9b9;
+}
+
+p, ol, ul, td {
+    font-family: verdana,arial,helvetica,sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+}
+pre {
+    background-color: #EEEEEE;
+    font-size: 11px;
+    padding: 10px;
+}
+a {
+    color: #000000;
+}
+a:visited {
+    color: #666666;
+}
+a:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+div.field, div.actions {
+    margin-bottom: 10px;
+}
+#notice {
+    color: green;
+}
+.field_with_errors {
+    background-color: red;
+    display: table;
+    padding: 2px;
+}
+#error_explanation {
+    background-color: #F0F0F0;
+    border: 2px solid red;
+    margin-bottom: 20px;
+    padding: 7px 7px 0;
+    width: 450px;
+}
+#error_explanation h2 {
+    background-color: #CC0000;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    margin: -7px -7px 0;
+    padding: 5px 5px 5px 15px;
+    text-align: left;
+}
+#error_explanation ul li {
+    font-size: 12px;
+    list-style: square outside none;
+}

@@ -1,0 +1,40 @@
+<h1>Listing it_cases</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Name</th>
+    <th>Department</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Location</th>
+    <th>Cubnum</th>
+    <th>Description</th>
+    <th>Casetype</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @it_cases.each do |it_case| %>
+  <tr>
+    <td><%= it_case.user_id %></td>
+    <td><%= it_case.name %></td>
+    <td><%= it_case.department %></td>
+    <td><%= it_case.email %></td>
+    <td><%= it_case.phone %></td>
+    <td><%= it_case.location %></td>
+    <td><%= it_case.cubnum %></td>
+    <td><%= it_case.description %></td>
+    <td><%= it_case.casetype %></td>
+    <td><%= it_case.status %></td>
+    <td><%= link_to 'Show', it_case %></td>
+    <td><%= link_to 'Edit', edit_it_case_path(it_case) %></td>
+    <td><%= link_to 'Destroy', it_case, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New It case', new_it_case_path %>

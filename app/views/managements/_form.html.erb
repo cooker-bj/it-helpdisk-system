@@ -1,0 +1,55 @@
+<%= form_for(@management) do |f| %>
+  <% if @management.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@management.errors.count, "error") %> prohibited this management from being saved:</h2>
+
+      <ul>
+      <% @management.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="field">
+
+      <%= f.label :email %>
+      <% if @management.email.nil? %>
+          <%= f.text_field :email,:id=>'email' %>@autonavi.com
+      <% else %>
+          <%= f.text_field :email,:disabled=>'disabled'  %>
+      <%  end %>
+    </div>
+
+  <div class="field">
+
+    <%= f.label :user,"用户名" %>
+    <% if @management.user.nil? %>
+        <%= f.text_field :user,:id=>'name' %>
+     <% else %>
+    <%= f.text_field :user,:disabled=>'disabled'  %>
+        <%  end %>
+  </div>
+    <div class="field">
+
+      <%= f.label :department,"部门" %>
+      <% if @management.department.nil? %>
+          <%= f.text_field :department,:id=>'department' %>
+      <% else %>
+          <%= f.text_field :department,:disabled=>'disabled'  %>
+      <%  end %>
+    </div>
+  <div class="field">
+    <% Management::CONTROLLER.each do |key,value| %>
+    <li>
+      <ul>
+        <%= check_box_tag "management[myrights][#{key}]",'on', !@management.myrights[key].nil?%>
+        <%= label_tag value %>
+      </ul>
+    </li>
+        <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "提交" %>
+  </div>
+<% end %>

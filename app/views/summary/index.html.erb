@@ -1,0 +1,183 @@
+<div class="wrap">
+	<div class="my_case">
+		<h2>数据汇总</h2>
+  	</div>
+<div><%= form_tag :action=>'index' do  %>开始日期<%=select_date @start,:prefix=>"start" %>结束日期<%=select_date @last,:prefix=>"end"%> <%= submit_tag "查询" %><% end %></div>
+
+<div class="tit"> 
+	<h3>周工单数量统计</h3>
+	<div class="pic">
+	<div class="s_table"> <table class="left" cellspacing="0" cellbordering="0">
+	<thead> <tr><th>日期</th><th>工单数量</th></tr></thead><tbody> <% unless @data[:weekly].nil?%>
+  <%@data[:weekly].each do |key, value| %>
+  <tr class="rol_e"><td class="l"><%= key %></td><td class="r"><%= value %></td> </tr>
+          <%end%>
+      <% end %></tbody>
+      </table></div>
+
+<div class='right'><%= image_tag url_for(:action=>'weekly_graph',:id=>build_id(@start,@last)),:height=>"300",:width=>"400" %></div>
+</div></div>
+
+<div class="tit">
+	<h3>月工单数量统计</h3>
+<div class="pic">
+<div class="s_table">
+<table cellspacing='0' cellbordering ='0'>
+<thead> <tr><th>日期</th><th>工单数量</th></tr></thead><tbody>
+<% unless @data[:monthly].nil? %>
+  <% @data[:monthly].each do |key,value| %>
+        <tr class="rol_d"><td><%= key %></td><td><%= value %></td> </tr>
+          <%end%><%end%>
+		  </tbody>
+          </table>
+		  </div>
+  <div class='right'><%= image_tag url_for(:action=>'monthly_graph',:id=>build_id(@start,@last)),:height=>"300",:width=>"400" %></div>
+</div>
+</div>
+
+<div class='tit'>
+
+
+  <h3>故障分类统计</h3>
+
+<div class="pic">
+  <div class="s_table">
+  <table cellspacing='0' cellbordering='0' ><thead> <tr><th>类别</th><th>工单数量</th></tr></thead><tbody>
+    <% unless @data[:casetype].nil? %>
+        <% @data[:casetype].each do |key,value| %>
+            <tr class="rol_d"><td><%= key %></td><td><%= value %></td> </tr>
+        <% end %>
+    <% end %></tbody>
+  </table></div>
+  <div class="right"> <%= image_tag url_for(:action=>'type_graph',:id=>build_id(@start,@last)),:height=>"300",:width=>"400" %></div>
+</div>
+</div>
+
+<div class="tit">
+
+  <h3>工作量统计</h3>
+
+<div class="pic">
+  <div class="s_table">
+  <table cellspacing='0' cellbordering='0'> <thead> <tr><th>姓名</th><th>工单总量</th><th>升级工单数量</th></tr></thead>
+  <tbody>
+    <% unless @data[:staff].nil? %>
+        <% @data[:staff][:total].each do |key,value| %>
+            <tr class="rol_d"><td><%= key %></td><td><%= value %></td><td><%= @data[:staff][:upgrade][key] %></td> </tr>
+        <% end %>
+    <% end %></tbody>
+  </table></div>
+  
+    <div class='right'><%= image_tag url_for(:action=>'workload_graph',:id=>build_id(@start,@last)),:height=>"300",:width=>"400" %></div>
+  
+</div>
+</div>
+
+  <div class='tit'>
+    <h3>等待时间统计</h3>
+
+    <div class="pic">
+      <div class="s_table">
+        <table cellspacing='0' cellbordering='0' ><thead> <tr><th>工作区</th><th>等待时间(分）</th></tr></thead><tbody>
+        <% unless @data[:waitting_time].nil? %>
+            <% @data[:waitting_time].each do |key,value| %>
+                <tr class="rol_d"><td><%= key %></td><td><%= value.round(2) %></td> </tr>
+            <% end %>
+        <% end %></tbody>
+        </table></div>
+      <div class="right"> <%= image_tag url_for(:action=>'waitting_graph',:id=>build_id(@start,@last)),:height=>"300",:width=>"400" %></div>
+    </div>
+  </div>
+
+  <div class='tit'>
+
+
+    <h3>分类处理时间</h3>
+
+    <div class="pic">
+      <div class="s_table">
+        <table cellspacing='0' cellbordering='0' ><thead> <tr><th>类别</th><th>平均处理时间(分)</th></tr></thead><tbody>
+        <% unless @data[:average_workon].nil? %>
+            <% @data[:average_workon].each do |key,value| %>
+                <tr class="rol_d"><td><%= key %></td><td><%= value.round(2) %></td> </tr>
+            <% end %>
+        <% end %></tbody>
+        </table></div>
+      <div class="right"> <%= image_tag url_for(:action=>'workon_by_type_graph',:id=>build_id(@start,@last)),:height=>"300",:width=>"400" %></div>
+    </div>
+  </div>
+
+  <div class='tit'>
+
+
+    <h3>员工处理时间</h3>
+
+    <div class="pic">
+      <div class="s_table">
+        <table cellspacing='0' cellbordering='0' ><thead> <tr><th>姓名</th><th>平均处理时间（分）</th></tr></thead><tbody>
+        <% unless @data[:average_workon_by_staff].nil? %>
+            <% @data[:average_workon_by_staff].each do |key,value| %>
+                <tr class="rol_d"><td><%= key %></td><td><%= value.round(2) %></td> </tr>
+            <% end %>
+        <% end %></tbody>
+        </table></div>
+      <div class="right"> <%= image_tag url_for(:action=>'workon_by_staff_graph',:id=>build_id(@start,@last)),:height=>"300",:width=>"400" %></div>
+    </div>
+  </div>
+
+  <div class='tit'>
+
+
+    <h3>评分分类统计</h3>
+
+    <div class="pic">
+      <div class="s_table">
+        <table cellspacing='0' cellbordering='0' ><thead> <tr><th>类别</th><th>工单数量</th></tr></thead><tbody>
+        <% unless @data[:rank].nil? %>
+            <% @data[:rank].each do |key,value| %>
+                <tr class="rol_d"><td><%= key.nil? ? "未评分" : key  %></td><td><%= value %></td> </tr>
+            <% end %>
+        <% end %></tbody>
+        </table></div>
+      <div class="right"> <%= image_tag url_for(:action=>'rank_graph',:id=>build_id(@start,@last)),:height=>"300",:width=>"400" %></div>
+    </div>
+  </div>
+
+
+  <div class='tit'>
+
+
+    <h3>员工评价统计</h3>
+
+    <div class="pic">
+      <div class="s_table">
+        <table cellspacing='0' cellbordering='0' ><thead> <tr><th>姓名</th><th>平均分数</th></tr></thead><tbody>
+        <% unless @data[:rank_by_staff].nil? %>
+            <% @data[:rank_by_staff].each do |key,value| %>
+                <tr class="rol_d"><td><%= key %></td><td><%= value %></td> </tr>
+            <% end %>
+        <% end %></tbody>
+        </table></div>
+      <div class="right"> <%= image_tag url_for(:action=>'rank_by_staff_graph',:id=>build_id(@start,@last)),:height=>"300",:width=>"400" %></div>
+    </div>
+  </div>
+
+  <div class='tit'>
+
+
+    <h3>工单渠道统计</h3>
+
+    <div class="pic">
+      <div class="s_table">
+        <table cellspacing='0' cellbordering='0' ><thead> <tr><th>来源</th><th>数量</th></tr></thead><tbody>
+        <% unless @data[:callin].nil? %>
+            <% @data[:callin].each do |key,value| %>
+                <tr class="rol_d"><td><%= key %></td><td><%= value %></td> </tr>
+            <% end %>
+        <% end %></tbody>
+        </table></div>
+      <div class="right"> <%= image_tag url_for(:action=>'callin_graph',:id=>build_id(@start,@last)),:height=>"300",:width=>"400" %></div>
+    </div>
+  </div>
+</div>
+

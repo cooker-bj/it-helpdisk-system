@@ -1,0 +1,41 @@
+<div class="wrap">
+  <div class="center">
+    <p id="notice"><%= notice %></p>
+    <p>
+      <b>访客姓名:</b>
+      <%= @myapp.guest_name %>
+    </p>
+    <p>
+      <b>访客单位:</b>
+      <%= @myapp.guest_from %>
+    </p>
+    <p>
+      <b>申请原因:</b>
+      <%= @myapp.reason %>
+    </p>
+    <p>
+      <b>无线启用时间:</b>
+      <%= @myapp.enabled_time %>
+    </p>
+    <p>
+      <b>使用时长:</b>
+      <%= @myapp.during %>  小时
+    </p>
+    <p>
+      <b>无线账号及密码:</b>
+    <li>
+      <% @myapp.wirelesses.each do |item| %>
+          <ul>
+            登录名：<%=item.account %>
+            密码:<%=item.password %>
+          </ul>
+      <%end%>
+    </li>
+    </p>
+  </div>
+
+
+  <div class="more">
+
+    <%= link_to '返回', mywirelesses_path %>
+  </div></div>

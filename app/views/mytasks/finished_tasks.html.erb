@@ -1,0 +1,10 @@
+<div class="wrap">
+  <div class="my_case">
+    <h2>已完成任务</h2>
+  </div>
+  <div class="tit">
+<%= render "show_tasks", :tasks=>@mytasks %>
+  </div>
+<%= will_paginate @mytask %>
+<div class="more"><%= link_to "返回",mytasks_path %> </div>
+</div>

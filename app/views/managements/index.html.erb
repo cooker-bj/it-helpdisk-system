@@ -1,0 +1,40 @@
+<div class="wrap">
+  <div class="my_case">
+    <h2>人员管理</h2>
+  </div>
+  <div class="tit">
+    <div class="c_table">
+<table cellspacing="0" cellpadding="0">
+  <thead>
+  <tr>
+
+    <th>用户名</th>
+    <% Management::CONTROLLER.each do |key, value| %>
+    <th><%= value%></th>
+   <% end %>
+       <th></th><th></th>
+  </tr>
+  </thead>
+  <tbody>       <%i=0%>
+<% @managements.each do |management| %>
+      <% if i.even? %>
+          <tr class="rol_d">
+      <%else%>
+          <tr class="rol_e">
+      <%end%>
+
+    <td><%= management.user %></td>
+    <%  Management::CONTROLLER.each do |key, value| %>
+     <td><%=  if management.myrights.has_key?(key); 'yes'; else 'no';end;  %></td>
+        <%end%>
+
+    <td><%= link_to '修改', edit_management_path(management) %></td>
+    <td><%= link_to '删除', management, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>    <%i+=1%>
+<% end %></tbody>
+</table></div>
+</div>
+
+
+<div class="c_btn"><%= link_to '新建用户', new_management_path %>    </div>
+</div>

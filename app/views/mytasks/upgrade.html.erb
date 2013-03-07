@@ -1,0 +1,23 @@
+<div class="wrap">
+  <div class="my_case">
+<h2>升级工单</h2></div>
+<div id='notice'><%=  notice %></div>
+<%= form_tag "upgrade" do  %>
+<div class="tit">
+  <div class="new_table">
+  <table  cellspacing="0" cellpadding="0"> <tr class="rol_d"> <td class="r">
+<%= label_tag 'receiver',"接收人" %></td> <td class="l">   <% @users=User.find_users_by_department("运营服务中心-IT部") %>
+<%= select_tag "receiver",options_from_collection_for_select( @users,"id","name") %></td></tr>
+    <tr class="rol_e">
+      <td class="r">
+    <%= label_tag "reason","升级原因" %>
+      </td>
+      <td class="l">
+<%= text_area_tag "reason",nil,:rows=>4,:cols=>30 %></td></tr>
+<%= hidden_field_tag "id",value=@task.id   %>
+  </table>
+   <div class="more"><%= submit_tag "提交" %>  </div>
+  </div>
+</div>
+<% end %>
+</div>

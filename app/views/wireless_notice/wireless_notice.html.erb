@@ -1,0 +1,9 @@
+<p><%=@recipient %> 您好</p>
+<p>您申请的访客无线账号和密码如下：</p>
+
+<% @wireless.wirelesses.each do |item| %>
+   <p>账号：<%=item.account %> 密码：<%=item.password %></p>
+  <% end  %>
+    
+<p>IT部 IT支持平台   </p>
+<%= Time.now %>

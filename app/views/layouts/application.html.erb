@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TaskTracingSystem</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+ <div class='head'>
+ <div id="toplogo"><img src="/assets/toplogo.jpg"> </div>
+   <div id="identity"> <% unless current_user.nil? %><b>hello <%= current_user.name %></b><%= link_to "退出","/signout" %><%end%></div>
+ </div>
+ <div class="mymenu">
+  <li>
+    <ul>
+      <div class="my_case"><h2><%=link_to "我的工单",mycases_path %></h2></div>
+ </ul>
+    <ul><div class="my_case"><h2><%=link_to "无线密码申请",mywirelesses_path %></h2></div></ul>
+
+    <% Management::CONTROLLER.each do |key,value| %>
+          <div class="my_case">
+            <% if Management.has_rights(key,current_user.id) %>
+    <ul>
+     <h2> <%= link_to value,"/#{key}" %></h2>
+    </ul> <%end%></div>
+        <% end %>
+  </li>
+ </div>
+  <div class='notice'><%= flash[:notice] %>
+  </div>
+ <div id="content">
+<%= yield %></div>
+
+
+
+</body>
+</html>

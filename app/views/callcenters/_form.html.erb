@@ -1,0 +1,54 @@
+<%= form_for @it_case, :url=>"/callcenters" do |f| %>
+  <% if @it_case.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@it_case.errors.count, "error") %> prohibited this it_case from being saved:</h2>
+
+      <ul>
+      <% @it_case.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+      <div class="new_table">
+    <table cellpadding="0" cellspacing="0">
+      <tr class="rol_d">   <td class='r'>
+      <%= f.label :email %></td><td class="l">
+      <%= f.text_field :email,:id=>"email" %>@autonavi.com</td>
+    </tr>
+  <tr class="rol_e">
+    <td class="r"><%= f.label :name,'姓名' %>   </td>
+    <td class="l"><%= f.text_field :name,:id=>"name" %> </td>
+  </tr>
+  <tr class="rol_d">
+    <td class="r"><%= f.label :department,'部门' %></td>
+    <td class="l"> <%= f.text_field :department,:id=>"department" %> </td>
+  </tr>
+
+      <tr class="rol_e">
+    <td class="r"><%= f.label :phone,"电话" %></td>
+    <td class="l"> <%= f.text_field :phone %> </td>
+      </tr>
+    <tr class="rol_d">
+    <td class="r"><%= f.label :location,"工作区" %></td>
+    <td class="l"><%= f.select :location,ItCase::LOCATIONS %>  </td>
+    </tr>
+    <tr class="rol_e">
+    <td class="r"> <%= f.label :cubnum,"工位编号" %></td>
+    <td class="l"><%= f.text_field :cubnum %>  </td>
+    </tr>
+    <tr class="rol_d">
+      <td class="r"><%= f.label :casetype,"问题类型" %></td>
+      <td class="l"> <%= f.select :casetype,ItCase::CASETYPES %> </td>
+    </tr>
+    <tr class="rol_e">
+    <td class="r"> <%= f.label :description ,"问题描述"%></td>
+    <td class="l"><%= f.text_area :description,:rows=>4,:cols=>30 %>    </td>
+    </tr>
+    </table> <div class="more">
+  <div class="actions">
+    <%= f.submit "提交" %>
+  </div>
+      </div>
+         </div>
+<% end %>

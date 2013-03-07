@@ -1,0 +1,5 @@
+host: 172.17.20.100
+port: 389
+dn: dc=company,dc=com
+username: ittest01@company.com
+password: Abc$1234

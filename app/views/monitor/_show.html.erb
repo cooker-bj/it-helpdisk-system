@@ -1,0 +1,49 @@
+<div class="tit">
+  <div class="c_table">
+<table cellpadding="0" cellspacing="0">
+  <thead>
+  <tr>
+    <th>问题类型</th>
+    <th>问题描述</th>
+    <th>提交时间</th>
+    <th>处理状态</th>
+    <th>用户名</th>
+    <th>部门</th>
+    <th>联系电话</th>
+    <th>工作区</th>
+
+      <th>开始处理时间</th>
+    <th>结束处理时间</th>
+    <th>处理人</th>
+    <th>处理结果</th>
+  </tr></thead>  <tbody>
+
+  <% @it_cases.each do |it_case| %>
+      <%num=it_case.tasks.size==0?1:it_case.tasks.size %>
+      <tr class="rol_d">
+        <td rowspan=<%="#{num}"%>><%= it_case.casetype %></td>
+        <td rowspan=<%="#{num}"%>><%= it_case.description %></td>
+        <td rowspan=<%="#{num}"%>><%= it_case.opened_time %></td>
+        <td rowspan=<%="#{num}"%>><%= it_case.status %></td>
+        <td rowspan=<%="#{num}"%>><%= it_case.name %></td>
+        <td rowspan=<%="#{num}"%>><%= it_case.department %></td>
+        <td rowspan=<%="#{num}"%>><%= it_case.phone %></td>
+        <td rowspan=<%="#{num}"%>><%= it_case.location %></td>
+        <% sw=0 %>
+       <% unless it_case.tasks.nil? %>
+          <% it_case.tasks.each do |task| %>
+          <%=tag("tr",nil,true) unless sw==0 %> 
+            <td> <%= task.taken_date %></td>
+            <td><%= task.finished_time %> </td>
+            <td><%=task.name %> </td>
+           <td><%= task.status %>   </td>
+              </tr>
+             <% sw+=1 %>
+           <% end %>
+       <% end %>
+     <%=tag("/tr",nil,true) if sw==0 %>
+  <% end %>
+</tbody>
+</table>
+ </div>
+</div>

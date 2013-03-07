@@ -1,0 +1,29 @@
+<h1>我的任务</h1>
+<div class='list'>
+<fieldset>
+  <h2>未完成的任务</h2>
+  <%=  render "show_tasks", :tasks=>@working_tasks   %>
+</fieldset>
+</div>
+ <br/>
+<div class='list'>
+  <fieldset>
+    <h2>已结束的任务</h2>
+
+   <%=  render "show_tasks", :tasks=>@closed_tasks   %>
+    <%= link_to "更多","mytasks/finished_tasks" %>
+  </fieldset>
+</div>
+
+<div>
+  待处理工单数量：<br/>
+  <table>
+    <tr><% ItCase::LOCATIONS.each do |li| %>
+          <td><%= li %>:<%=@waiting_lines[li]%></td>
+          <%end%></tr>
+
+  </table>
+
+  <%= form_tag mytasks_new_path do  %>     <%= label_tag 'location','工作区' %>   <%= select_tag 'location',options_for_select(ItCase::LOCATIONS,:selected=>location) %> <%= submit_tag '提取工单' %>
+  <%end%>
+</div>

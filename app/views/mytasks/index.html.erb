@@ -1,0 +1,45 @@
+<script language='javascript'>setTimeout("self.location.reload()",60000)</script>
+<div class="wrap">
+  <div class="my_case">
+<h2>我的任务</h2>
+  </div>
+<div class="tit">
+  <h3>待处理工单</h3>
+  <div class="c_table">
+    <table cellspacing="0" cellpadding="0">
+      <thead>
+      <tr>
+    <% ItCase::LOCATIONS.each do |li| %>
+       <th><%= li %></th>
+      <%end%>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="rol_d" >
+        <% ItCase::LOCATIONS.each do |li| %>
+      <td><%= @waiting_lines[li] unless @waiting_lines.nil?%> </td>
+            <%end%>
+      </tr>
+      </tbody>
+    </table>
+  <%= form_tag new_mytask_path do  %>     <%= label_tag 'location','当前工作区' %>   <%= select_tag 'location',options_for_select(ItCase::LOCATIONS,:selected=>location_help) %> <div class="more"><%= submit_tag '提取工单' %></div>
+  <%end%>
+</div>
+  </div>
+<div class='tit'>
+
+  <h3>未完成的任务</h3>
+  <%=  render "show_tasks", :tasks=>@working_tasks   %>
+
+</div>
+ <br/>
+<div class='tit'>
+
+    <h3>已结束的任务</h3>
+
+   <%=  render "show_tasks", :tasks=>@closed_tasks   %>
+   <div class="more"> <%= link_to "更多",:action=>"finished_tasks" %></div>
+
+</div>
+
+</div>

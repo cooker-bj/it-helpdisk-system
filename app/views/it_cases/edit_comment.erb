@@ -1,0 +1,82 @@
+
+<h1>评价工单</h1>
+<p>
+<b>问题类型</b> <br/>
+<%= @it_case.casetype %> 
+</p>
+
+<p>
+   <b>问题描述</b> <br/>
+  <%= @it_case.description %> <br/>
+  
+</p>
+
+<%= form_for(@it_case) do |f| %>
+    <% if @it_case.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@it_case.errors.count, "error") %> prohibited this it_case from being saved:</h2>
+
+          <ul>
+            <% @it_case.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+    
+    <div class="field">
+      <%=f.label :comment,"评价" %> <br/>
+      <%= f.text_area :comment %>
+    </div>
+             
+    <div class="field">
+       <%= f.label :rank,"评分" %> <br/>
+      <%= f.hidden_field :rank %>
+       
+    </div>
+    <div class="shop-rating">
+      <ul class="rating-level" id="stars2">
+        <li><a href="javascript:void(0);" class="one-star" star:value="20">20</a></li>
+        <li><a href="javascript:void(0);" class="two-stars" star:value="40">40</a></li>
+        <li><a href="javascript:void(0);" class="three-stars" star:value="60">60</a></li>
+        <li><a href="javascript:void(0);" class="four-stars" star:value="80">80</a></li>
+        <li><a href="javascript:void(0);" class="five-stars" star:value="100">100</a></li>
+      </ul>
+      <span id="stars2-tips" class="result"></span>
+
+    </div>
+    <script>
+        var TB = function() {
+            var T$ = function(id) { return document.getElementById(id) }
+            var T$$ = function(r, t) { return (r || document).getElementsByTagName(t) }
+            var Stars = function(cid, rid, hid, config) {
+                var lis = T$$(T$(cid), 'li'), curA;
+                for (var i = 0, len = lis.length; i < len; i++) {
+                    lis[i]._val = i;
+                    lis[i].onclick = function() {
+                        T$(rid).innerHTML = '<em>' + (T$(hid).value = T$$(this, 'a')[0].getAttribute('star:value')) + '分</em> - ' + config.info[this._val];
+                        curA = T$$(T$(cid), 'a')[T$(hid).value / config.step - 1];
+                    };
+                    lis[i].onmouseout = function() {
+                        curA && (curA.className += config.curcss);
+                    }
+                    lis[i].onmouseover = function() {
+                        curA && (curA.className = curA.className.replace(config.curcss, ''));
+                    }
+                }
+            };
+            return {Stars: Stars}
+        }().Stars('stars2', 'stars2-tips', 'it_case_rank', {
+                    'info' : ['极差', '不怎么好', '一般吧', '不错', '非常好'],
+                    'curcss': ' current-rating',
+                    'step': 20
+                });
+    </script>
+
+
+    <div class="actions">
+      <%= f.submit "提交" %>
+    </div>
+<% end %>

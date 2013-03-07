@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TaskTracingSystem</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+ <div class='head'>
+ <div id="toplogo"><img src="/assets/toplogo.jpg"> </div>
+   <div id="identity"> <% unless current_user.nil? %><b>hello <%= current_user.name %></b><%= link_to "退出","/signout" %><%end%></div>
+ </div>
+  <div class='notice'><%= flash[:notice] %>
+  </div>
+ <div id="content">
+<%= yield %></div>
+
+
+
+</body>
+</html>

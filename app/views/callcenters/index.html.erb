@@ -1,0 +1,46 @@
+<div class="wrap">
+  <div class="my_case">
+<h2>我的电话工单</h2></div>
+  <div class="c_btn">
+<%= link_to "新建工单",{:action=>'new'},:method=>:get %></div>
+<div class="tit">
+  <h3>本日工单列表</h3>
+  <div class="c_table">
+  <table cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+      <th>姓名</th>
+      <th>部门</th>
+      <th>电话</th>
+      <th>邮件</th>
+      <th>问题类型</th>
+      <th>问题描述</th>
+      <th>提交时间</th>
+      <th>处理状态</th>
+    </tr>
+    </thead>
+    <tbody>     <% i=0 %>
+    <% @it_cases.each do |it_case| %>
+       <% if i.even? %>
+        <tr class="rol_d">
+        <%else%>
+        <tr class="rol_e">
+         <%end%>
+          <td><%= it_case.name %></td>
+          <td><%= it_case.department %></td>
+          <td><%= it_case.phone %></td>
+          <td><%=  it_case.email%></td>
+          <td><%= it_case.casetype %></td>
+          <td><%= it_case.description %></td>
+
+          <td><%= it_case.opened_time %></td>
+          <td><%= it_case.status %></td>
+
+        </tr>
+    <%i+=1%>
+    <% end %>
+    </tbody>
+  </table>
+  </div>
+</div>
+</div>

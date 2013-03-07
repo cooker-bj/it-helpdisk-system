@@ -1,0 +1,54 @@
+<h1>新建工单</h1>
+
+<%= form_for(@it_case) do |f| %>
+    <% if @it_case.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@it_case.errors.count, "error") %> prohibited this it_case from being saved:</h2>
+
+          <ul>
+            <% @it_case.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+    <div class="field">
+      <%= f.label :name,'姓名' %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :department,'部门' %><br />
+      <%= f.text_field :department %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :phone,"电话" %><br />
+      <%= f.text_field :phone %>
+    </div>
+    <div class="field">
+      <%= f.label :location,"工作区" %><br />
+      <%= f.select :location,ItCase::LOCATIONS,:selected=>location_help %>
+    </div>
+    <div class="field">
+      <%= f.label :cubnum,"工位编号/位置描述" %><br />
+      <%= f.text_field :cubnum %>
+    </div>
+    <div class="field">
+      <%= f.label :description ,"问题描述"%><br />
+      <%= f.text_area :description %>
+    </div>
+    <div class="field">
+      <%= f.label :casetype,"问题类型" %><br />
+      <%= f.select :casetype,ItCase::CASETYPES %>
+    </div>
+    <div class="actions">
+      <%= f.submit "提交" %>
+    </div>
+<% end %>
+
+<%= link_to '返回', 'mycases' %>

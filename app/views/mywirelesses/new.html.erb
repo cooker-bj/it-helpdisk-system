@@ -1,0 +1,60 @@
+<div class="wrap_new_table">
+<div class="my_case">
+  <h2>申请访客无线账号</h2>
+</div>
+
+
+
+<%= form_for @myapp,:url=>'/mywirelesses'  do |f| %>
+    <% if @myapp.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@myapp.errors.count, "error") %> prohibited this appication from being saved:</h2>
+
+          <ul>
+            <% @myapp.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+
+    <% end %>
+
+    <div class="new_table">
+      <table cellspacing="0" cellpadding="0">
+
+        <tr class="rol_d">
+          <td class="r"> <%= f.label :guest_name,'访客姓名' %></td>
+          <td class="l"><%= f.text_field :guest_name %></td>
+        </tr>
+        <tr class="rol_e">
+          <td class="r"><%= f.label :guest_from,'访客单位' %></td>
+          <td class="l"><%= f.text_field :guest_from %></td>
+        </tr>
+        <tr class="rol_d">
+          <td class="r"> <%= f.label :number, "申请数量" %></td>
+          <td class="l"> <%= f.select(:number,[[1,1],[2,2],[3,3],[4,4],[5,5]])  %></td>
+        </tr>
+        <tr class="rol_e">
+          <td class="r"><%= f.label :enabled_time,"启用时间" %></td>
+          <td class="l"> <%= f.datetime_select :enabled_time %></td>
+        </tr>
+        <tr class="rol_d">
+          <td class="r"> <%= f.label :during,"使用时长" %></td>
+          <td class="l"><%= f.select :during,[[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10],[11,11],[12,12]] %>小时</td>
+        </tr>
+
+        <tr class="rol_e">
+          <td class="r"><%= f.label :reason ,"申请原因"%></td>
+          <td class="l"><%= f.text_area :reason,:rows=>6,:cols=>30 %> </td>
+        </tr></table>
+    </div>
+
+    <div class="more">  <%= f.submit "提交" %>  </div>
+<% end %>
+
+<div class="more"   >
+  <%= link_to '返回',:back %>
+</div>
+
+</div>
+

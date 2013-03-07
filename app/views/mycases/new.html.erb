@@ -1,0 +1,66 @@
+<div class="wrap_new_table">
+  <div class="my_case">
+    <h2>新建工单</h2>
+  </div>
+
+
+
+<%= form_for @it_case,:url=>'/mycases'  do |f| %>
+    <% if @it_case.errors.any? %>
+      <div id="error_explanation">
+          <h2><%= pluralize(@it_case.errors.count, "error") %> prohibited this it_case from being saved:</h2>
+
+          <ul>
+            <% @it_case.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+
+  <% end %>
+
+      <div class="new_table">
+        <table cellspacing="0" cellpadding="0">
+
+            <tr class="rol_d">
+              <td class="r"> <%= f.label :name,'姓名' %></td>
+              <td class="l"><%= f.text_field :name %></td>
+            </tr>
+            <tr class="rol_e">
+              <td class="r"><%= f.label :department,'部门' %></td>
+              <td class="l"><%= f.text_field :department %></td>
+            </tr>
+            <tr class="rol_d">
+              <td class="r"> <%= f.label :email %></td>
+              <td class="l"> <%= f.text_field :email %></td>
+            </tr>
+            <tr class="rol_e">
+              <td class="r"><%= f.label :phone,"电话" %></td>
+              <td class="l"> <%= f.text_field :phone %></td>
+            </tr>
+            <tr class="rol_d">
+              <td class="r"> <%= f.label :location,"工作区" %></td>
+              <td class="l"><%= f.select :location,ItCase::LOCATIONS,:selected=>location_help %></td>
+            </tr>
+            <tr class="rol_e">
+              <td class="r"> <%= f.label :cubnum,"工位编号/位置描述" %></td>
+              <td class="l"><%= f.text_field :cubnum %> 说明你的位置,使IT人员可以找到你</td>
+            </tr>
+            <tr class="rol_d">
+              <td class="r"> <%= f.label :casetype,"问题类型" %></td>
+              <td class="l"> <%= f.select :casetype,ItCase::CASETYPES %></td>
+            </tr>
+            <tr class="rol_e">
+              <td class="r"><%= f.label :description ,"问题描述"%></td>
+              <td class="l"><%= f.text_area :description,:rows=>6,:cols=>30 %> </td>
+            </tr></table>
+      </div>
+
+        <div class="more">  <%= f.submit "提交" %>  </div>
+<% end %>
+
+  <div class="more"   >
+<%= link_to '返回',:back %>
+  </div>
+
+</div>

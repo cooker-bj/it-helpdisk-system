@@ -1,0 +1,10 @@
+<h1>升级工单</h1>
+<div id='notice'><%=  notice %></div>
+<%= form_tag "upgrade" do  %>
+<%= label_tag 'receiver',"接收人" %>
+<%= text_field_tag "receiver" %><br/>
+<%= label_tag "reason","升级原因" %> <br/>
+<%= text_area_tag "reason" %>
+<%= hidden_field_tag "id",value=@task.id   %> <br/>
+    <%= submit_tag "提交" %>
+<% end %>

@@ -1,0 +1,6 @@
+welcome to using the task tracing system.
+the system is an Online IT support helpdisk system, which support microsoft windows 2008 domain.
+all user must have an account of AD before they use the system. IT stuff should be assigned rights to deal the IT Case.
+the system also includes a free radius database, which can be used to control wireless access by freeradius.
+
+  the system depends on ruby-ldap. so  if you want to try, you need install ruby-ldap first.

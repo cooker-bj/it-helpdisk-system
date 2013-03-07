@@ -1,0 +1,24 @@
+<div class="wrap">
+  <div class="center">
+<p id="notice"><%= notice %></p>
+<p>
+  <b>用户名:</b>
+  <%= @management.user %>
+</p>
+<p>
+  <b>用户权限:</b>
+  <li>
+  <% @management.myrights.each do |key, value| %>
+        <ul>
+  <%= Management::CONTROLLER[key] %>
+            </ul>
+  <%end%>
+</li>
+</p>
+</div>
+
+
+ <div class="more">
+<%= link_to "修改", edit_management_path(@management) %>
+<%= link_to '返回', managements_path %>
+</div></div>

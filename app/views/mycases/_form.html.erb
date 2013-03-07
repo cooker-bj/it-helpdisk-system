@@ -1,0 +1,39 @@
+
+<div class='tit'>
+  <h3>已完成工单</h3>
+</div>
+<div class="c_table">
+  <table cellspacing="0" cellpadding="0">
+    <thead>
+    <tr>
+      <th>问题类型</th>
+      <th>问题描述</th>
+      <th>提交时间</th>
+      <th>处理状态</th>
+      <th>完成时间</th>
+      <th>处理情况</th>
+      <th>评价</th>
+      <th>评级</th>
+    </tr> </thead>
+    <tbody>
+    <% i=0 %>
+    <% @my_closed_cases.each do |it_case| %>
+        <% if i.even? %>
+            <tr class="rol_d">
+        <%else%>
+            <tr class="rol_e">
+        <%end%>
+          <td><%= it_case.casetype %></td>
+          <td><%= it_case.description %></td>
+          <td><%= it_case.opened_time %></td>
+          <td><%= it_case.status %></td>
+          <td><%= it_case.closed_time %></td>
+          <td><%= it_case.result %></td>
+          <td><%= it_case.comment %></td>
+          <td><%= it_case.rank %></td>
+          <td><%=link_to "评价",comment_path(it_case) %></td>
+        </tr>
+    <%i+=1%>
+    <% end %>
+    </tbody></table>
+</div>
